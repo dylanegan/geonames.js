@@ -11,3 +11,11 @@ class GeoNames
           console.log error
 
       callback weather
+
+  timezone: (latitude, longitude, callback) ->
+    $.getJSON "http://ws.geonames.org/timezoneJSON?lat="+escape(latitude)+"&lng="+escape(longitude)+"&callback=?", (response) ->
+      try
+        callback response
+      catch error
+        if console
+          console.log error
